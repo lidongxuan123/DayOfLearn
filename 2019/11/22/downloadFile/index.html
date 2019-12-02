@@ -86,15 +86,15 @@
 
 
 
-<meta name="description" content="SUMMARY OF LEARNING">
+<meta name="description" content="文件下载 a标签的下载方式1&amp;lt;a href=&amp;quot;下载的url &#x2F; 文件地址&amp;quot;&amp;gt;下载&amp;lt;&#x2F;a&amp;gt; window.location.href = “下载的url” 地址url为下载路径，则进行下载地址为地址路径，则进行跳转  1window.loaction.href= &amp;quot;下载url&amp;quot; window.open = “下载的url” 使用标签下载">
 <meta name="keywords" content="前端项目实现文件的下载downloadFile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端项目实现文件的下载downloadFile">
 <meta property="og:url" content="http:&#x2F;&#x2F;lidongxuan123&#x2F;DayOfLearn&#x2F;2019&#x2F;11&#x2F;22&#x2F;downloadFile&#x2F;index.html">
 <meta property="og:site_name" content="日常学习总结">
-<meta property="og:description" content="SUMMARY OF LEARNING">
+<meta property="og:description" content="文件下载 a标签的下载方式1&amp;lt;a href=&amp;quot;下载的url &#x2F; 文件地址&amp;quot;&amp;gt;下载&amp;lt;&#x2F;a&amp;gt; window.location.href = “下载的url” 地址url为下载路径，则进行下载地址为地址路径，则进行跳转  1window.loaction.href= &amp;quot;下载url&amp;quot; window.open = “下载的url” 使用标签下载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-22T05:50:04.024Z">
+<meta property="og:updated_time" content="2019-11-22T08:35:32.509Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -437,7 +437,20 @@
       
 
       
-        
+        <h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><ol>
+<li>a标签的下载方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;下载的url / 文件地址&quot;&gt;下载&lt;/a&gt;</span><br></pre></td></tr></table></figure></li>
+<li>window.location.href = “下载的url”<blockquote>
+<p>地址url为下载路径，则进行下载<br>地址为地址路径，则进行跳转</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.loaction.href= &quot;下载url&quot;</span><br></pre></td></tr></table></figure></li>
+<li>window.open = “下载的url”</li>
+<li>使用<a>标签下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;/api/download/test&quot;&gt;下载&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">*后台*</span><br><span class="line">app.get(&quot;/download/test&quot;,function(req,res) &#123;</span><br><span class="line">    fs.readFile(__dirname+&apos;/文件名&apos;, &quot;utf-8&quot;, function(err,data) &#123;</span><br><span class="line">        if (err) &#123;</span><br><span class="line">            console.log(err)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            res.send(data)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>下载后台写法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(&quot;/download/test&quot;,function(req,res) &#123;</span><br><span class="line">    res.download(path.resolve(__dirname+&quot;/111/txt&quot;))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>文件下载 <a href="https://www.jianshu.com/p/917a15445510" target="_blank" rel="noopener">文件下载第六种方式</a></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">jquery的下载方式</span><br><span class="line"></span><br><span class="line">$ajax(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    type: &quot;post&quot;,</span><br><span class="line">    data: data,</span><br><span class="line">    success: function(res) &#123;</span><br><span class="line">        let content = res.data</span><br><span class="line">        const blob = new Blob([data])</span><br><span class="line">        let filename =&quot;filename.txt&quot;</span><br><span class="line">        if (&quot;download&quot; in document.createElement(&quot;a)) &#123;</span><br><span class="line">            const fileLink = document.createElement(&quot;a&quot;)</span><br><span class="line">            fileLink.download = filename</span><br><span class="line">            fileLink.style.display = &quot;none&quot;</span><br><span class="line">            fileLink.href = URL.createObjectURL(blob)</span><br><span class="line">            document.body.appendChild(fileLink)</span><br><span class="line">            fileLink.click()</span><br><span class="line">            URL.revokeObjectURL(fileLink.href)</span><br><span class="line">            document.body.removeChild(fileLink)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            nabigator.msSaveBlob(blob,filename)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p></style>   </p>
+
       
     </div>
     
@@ -566,8 +579,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -586,7 +608,7 @@
               
                 <a href="/DayOfLearn/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +630,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/DayOfLearn/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -677,6 +699,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件下载"><span class="nav-number">1.</span> <span class="nav-text">文件下载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
